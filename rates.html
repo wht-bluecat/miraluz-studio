@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rates — Miraluz Studio</title>
+  <meta name="description" content="Studio rental starting at ₱1,000/hr. Two packages, transparent pricing, 3-hour minimum. GCash, bank transfer, or cash.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="Miraluz Studio — Home">
+        <img src="assets/logo.jpg" alt="Miraluz Studio" class="logo-img" height="40">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="studio.html">The Studio</a></li>
+        <li><a href="rates.html" class="active">Rates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-sub">Rates</div>
+      <h1>Two packages.<br>No fine print.</h1>
+      <p>Pick what fits your shoot. Hourly rates, 3-hour minimum, everything included. Extra hours at the same rate.</p>
+    </div>
+  </section>
+
+  <!-- RATE CARDS -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="rates-grid">
+        <!-- Studio Only -->
+        <div class="rate-card">
+          <h3>Studio Only</h3>
+          <p class="rate-desc">The main studio space — perfect for solo creators and smaller shoots.</p>
+          <div class="rate-price">
+            <span class="price">&#8369;1,200</span><span class="unit">/hr</span>
+            <span class="promo">Launch rate: &#8369;1,000/hr</span>
+          </div>
+          <ul class="rate-includes">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Main studio access</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Natural + artificial lighting</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>3-hour minimum</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi included</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="width:100%;">Book This Package</a>
+        </div>
+        <!-- Full Access -->
+        <div class="rate-card featured">
+          <h3>Full Access</h3>
+          <p class="rate-desc">Studio + hallway + makeup room — the complete setup for bigger productions.</p>
+          <div class="rate-price">
+            <span class="price">&#8369;1,500</span><span class="unit">/hr</span>
+            <span class="promo">Launch rate: &#8369;1,200/hr</span>
+          </div>
+          <ul class="rate-includes">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Main studio access</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Hallway access</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Makeup room included</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Natural + artificial lighting</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>3-hour minimum</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi included</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;">Book This Package</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING INFO -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="section-centered">
+        <div class="section-sub">Before You Book</div>
+        <h2>The details that matter.</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-item">
+          <h3>Minimum Hours</h3>
+          <p>All bookings require a 3-hour minimum. Need more time? Additional hours charged at the same rate.</p>
+        </div>
+        <div class="info-item">
+          <h3>Payment</h3>
+          <p>GCash, bank transfer, or cash. Full payment is due before your session starts — no invoicing, no delays.</p>
+        </div>
+        <div class="info-item">
+          <h3>Rescheduling</h3>
+          <p>No cancellations, but you can reschedule to any available date. Just reach out at least 48 hours before.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Found your package?</h2>
+      <p>Send us your preferred date and time. We confirm within 24 hours.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary">Book Your Session</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 Miraluz Studio. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="https://instagram.com/miraluzstudio" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

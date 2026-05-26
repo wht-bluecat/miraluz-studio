@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Studio — Miraluz Studio</title>
+  <meta name="description" content="Three creative spaces under one roof — main studio, hallway, and makeup room. Built for photographers, filmmakers, and content creators in Quezon City.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="Miraluz Studio — Home">
+        <img src="assets/logo.jpg" alt="Miraluz Studio" class="logo-img" height="40">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="studio.html" class="active">The Studio</a></li>
+        <li><a href="rates.html">Rates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-sub">The Studio</div>
+      <h1>Three spaces.<br>One creative address.</h1>
+      <p>A main studio, extended hallway, and prep room — designed so you can focus on the work, not the logistics.</p>
+    </div>
+  </section>
+
+  <!-- MAIN STUDIO -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="two-col">
+        <div class="placeholder-img">Main Studio — Wide Shot</div>
+        <div class="two-col-text">
+          <div class="section-sub">Space 01</div>
+          <h2>Main Studio</h2>
+          <p>Your primary shooting space. Open-plan, adaptable, and ready for whatever you bring in — portraits, product shots, video content, or campaign work.</p>
+          <p>Natural light from windows plus adjustable artificial options so you control the mood.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="container">
+      <div class="gallery-grid three-col">
+        <div class="placeholder-img square">Studio Detail 1</div>
+        <div class="placeholder-img square">Studio Detail 2</div>
+        <div class="placeholder-img square">Studio Detail 3</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALLWAY -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="two-col">
+        <div class="two-col-text">
+          <div class="section-sub">Space 02</div>
+          <h2>Hallway</h2>
+          <p>More room to work with depth, movement, and multiple setups. The hallway extends your creative options without leaving the building.</p>
+          <p>Ideal for fashion editorials, cinematic sequences, and shoots that need breathing room.</p>
+        </div>
+        <div class="placeholder-img">Hallway — Wide Shot</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAKEUP ROOM -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="two-col">
+        <div class="placeholder-img">Makeup Room — Wide Shot</div>
+        <div class="two-col-text">
+          <div class="section-sub">Space 03</div>
+          <h2>Makeup Room</h2>
+          <p>Your talent shouldn't prep in a hallway. This dedicated room has mirrors, lighting, and space for hair, makeup, and styling teams to do their thing.</p>
+          <p>Included in the Full Access package at no extra cost.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="section-centered">
+        <div class="section-sub">Location</div>
+        <h2>Easy to find. Easy to get to.</h2>
+        <p class="section-desc">We're inside Three Story House on Scout Limbaga Ext, Quezon City — accessible from major routes across Metro Manila.</p>
+      </div>
+      <div class="map-placeholder">Map / Exterior Photo</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to see it in person?</h2>
+      <p>Check the rates, pick your date, and book. We'll confirm within 24 hours.</p>
+      <div class="cta-buttons">
+        <a href="rates.html" class="btn btn-primary">View Rates</a>
+        <a href="contact.html" class="btn btn-outline">Book Your Session</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 Miraluz Studio. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="https://instagram.com/miraluzstudio" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
