@@ -12,8 +12,14 @@
   <script src="theme.js"></script>
   <style>
     /* Hide page content until preloader finishes — prevents flash */
-    .page-hidden { opacity: 0; }
-    .page-visible { opacity: 1; transition: opacity 0.4s ease; }
+    body.page-hidden .nav,
+    body.page-hidden main,
+    body.page-hidden .footer,
+    body.page-hidden .skip-link { opacity: 0; }
+    body.page-visible .nav,
+    body.page-visible main,
+    body.page-visible .footer,
+    body.page-visible .skip-link { opacity: 1; transition: opacity 0.4s ease; }
   </style>
 </head>
 <body class="page-hidden">
