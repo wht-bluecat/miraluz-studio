@@ -984,6 +984,131 @@ img {
   padding-right: 40px;
 }
 
+/* --- Calendar Picker --- */
+
+.calendar-picker {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--space-5);
+  user-select: none;
+}
+
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.cal-month {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--heading);
+  letter-spacing: 0.5px;
+}
+
+.cal-nav {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.cal-nav svg {
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cal-nav:hover {
+  border-color: var(--accent);
+  color: var(--heading);
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-day-name {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: var(--space-2) 0;
+}
+
+.cal-day {
+  text-align: center;
+  padding: 10px 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.cal-day:hover:not(.disabled):not(.booked):not(.empty) {
+  background: var(--accent-subtle);
+  color: var(--heading);
+}
+
+.cal-day.today {
+  font-weight: 700;
+  color: var(--heading);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.cal-day.selected {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.cal-day.disabled {
+  color: var(--text-muted);
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cal-day.booked {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cal-day.empty {
+  cursor: default;
+}
+
+.cal-selected {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
 .contact-info {
   display: flex;
   flex-direction: column;
