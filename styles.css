@@ -1,6 +1,27 @@
 /* === MIRALUZ STUDIO — Design System === */
 
+/* --- Kessel 105 Text (Heading Font) --- */
+@font-face {
+  font-family: 'Kessel 105';
+  src: url('assets/fonts/kessel-105-heavy.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kessel 105';
+  src: url('assets/fonts/kessel-105-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  /* Fonts */
+  --font-heading: 'Kessel 105', 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Montserrat', system-ui, -apple-system, sans-serif;
+
   /* Type Scale (1.25 ratio) */
   --text-xs: 12px;
   --text-sm: 13px;
@@ -25,7 +46,7 @@
   --space-10: 80px;
   --space-11: 100px;
 
-  /* Light Theme (default) */
+  /* Light Theme (default) — Monochrome */
   --bg: #FFFFFF;
   --bg-elevated: #F7F7F5;
   --bg-card: #EEEEEC;
@@ -33,9 +54,9 @@
   --text: #333333;
   --text-secondary: #5C5C5C;
   --text-muted: #999999;
-  --accent: #A68332;
-  --accent-hover: #8C6E28;
-  --accent-subtle: rgba(166, 131, 50, 0.08);
+  --accent: #19191A;
+  --accent-hover: #333333;
+  --accent-subtle: rgba(25, 25, 26, 0.04);
   --border: #E2E2E0;
   --border-hover: #C8C8C5;
   --nav-bg: rgba(255, 255, 255, 0.92);
@@ -43,7 +64,7 @@
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
-  --focus-ring: 0 0 0 3px rgba(166, 131, 50, 0.35);
+  --focus-ring: 0 0 0 3px rgba(25, 25, 26, 0.25);
   color-scheme: light;
 }
 
@@ -55,16 +76,16 @@
   --text: #D4D4D0;
   --text-secondary: #9A9A96;
   --text-muted: #5C5C58;
-  --accent: #D4AD4B;
-  --accent-hover: #E0BD62;
-  --accent-subtle: rgba(212, 173, 75, 0.08);
+  --accent: #F5F5F3;
+  --accent-hover: #FFFFFF;
+  --accent-subtle: rgba(245, 245, 243, 0.04);
   --border: #2A2A2B;
   --border-hover: #3A3A3B;
   --nav-bg: rgba(17, 17, 18, 0.92);
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
-  --focus-ring: 0 0 0 3px rgba(212, 173, 75, 0.4);
+  --focus-ring: 0 0 0 3px rgba(245, 245, 243, 0.3);
   color-scheme: dark;
 }
 
@@ -89,7 +110,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: var(--text-base);
   background: var(--bg);
   color: var(--text);
@@ -122,7 +143,7 @@ img {
   top: -100%;
   left: var(--space-4);
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
   padding: var(--space-2) var(--space-4);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -325,8 +346,9 @@ img {
 }
 
 .preloader-counter {
+  font-family: var(--font-heading);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 3px;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
@@ -356,9 +378,9 @@ img {
   padding: var(--space-5) 0;
   background: none;
   border: none;
-  font-family: inherit;
+  font-family: var(--font-heading);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--heading);
   cursor: pointer;
   text-align: left;
@@ -443,7 +465,7 @@ img {
 
 .btn-primary {
   background: var(--accent);
-  color: #FFFFFF;
+  color: var(--bg);
 }
 
 .btn-primary:hover {
@@ -502,6 +524,7 @@ img {
 }
 
 .hero h1 {
+  font-family: var(--font-heading);
   font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl));
   font-weight: 700;
   line-height: 1.08;
@@ -545,6 +568,7 @@ img {
 }
 
 .section h2 {
+  font-family: var(--font-heading);
   font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
   font-weight: 700;
   line-height: 1.12;
@@ -708,7 +732,7 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--accent);
-  color: #FFFFFF;
+  color: var(--bg);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -814,6 +838,7 @@ img {
 }
 
 .cta-banner h2 {
+  font-family: var(--font-heading);
   font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
   font-weight: 700;
   color: var(--heading);
@@ -951,6 +976,7 @@ img {
 }
 
 .two-col-text h2 {
+  font-family: var(--font-heading);
   font-size: clamp(var(--text-3xl), 4vw, 38px);
   font-weight: 700;
   color: var(--heading);
