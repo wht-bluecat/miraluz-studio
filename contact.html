@@ -94,11 +94,11 @@
   <main id="main">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" data-parallax>
     <div class="container">
-      <div class="hero-sub">Contact</div>
-      <h1>Tell us about<br>your shoot.</h1>
-      <p>Send your preferred date, time, and package. We respond to every inquiry within 24 hours.</p>
+      <div class="hero-sub" data-reveal="fade">Contact</div>
+      <h1 data-reveal>Tell us about<br>your shoot.</h1>
+      <p data-reveal>Send your preferred date, time, and package. We respond to every inquiry within 24 hours.</p>
     </div>
   </section>
 
@@ -107,7 +107,7 @@
     <div class="container">
       <div class="contact-grid">
         <!-- Form -->
-        <form id="inquiry-form" data-script-url="https://script.google.com/macros/s/AKfycbz_YKDn3nuPhHYh5pYsXFBhAeFOyfgEevlA0rHn0VO_3--JLGefnrcUXv9yLl5xShUs/exec" novalidate>
+        <form id="inquiry-form" data-reveal="slide-left" data-script-url="https://script.google.com/macros/s/AKfycbz_YKDn3nuPhHYh5pYsXFBhAeFOyfgEevlA0rHn0VO_3--JLGefnrcUXv9yLl5xShUs/exec" novalidate>
           <div class="form-group">
             <label for="name">Name <span class="required">*</span></label>
             <input type="text" id="name" name="name" placeholder="Your full name" required>
@@ -182,7 +182,7 @@
         </div>
 
         <!-- Info Sidebar -->
-        <div class="contact-info">
+        <div class="contact-info" data-reveal="slide-right">
           <div class="contact-info-item">
             <h3>Location</h3>
             <p>Scout Limbaga Ext, Quezon City<br>Inside Three Story House<br>(@threestoryhouseph)</p>
@@ -211,7 +211,7 @@
   <!-- MAP -->
   <section class="section">
     <div class="container">
-      <div class="map-placeholder">Map / Directions</div>
+      <div class="map-placeholder" data-reveal="scale">Map / Directions</div>
     </div>
   </section>
 
@@ -229,5 +229,6 @@
   </footer>
 
   <script src="booking.js"></script>
+  <script src="scroll.js"></script>
 </body>
 </html>

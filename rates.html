@@ -42,18 +42,18 @@
   <main id="main">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" data-parallax>
     <div class="container">
-      <div class="hero-sub">Rates</div>
-      <h1>Two packages.<br>No fine print.</h1>
-      <p>Pick what fits your shoot. Hourly rates, 3-hour minimum, everything included. Extra hours at the same rate.</p>
+      <div class="hero-sub" data-reveal="fade">Rates</div>
+      <h1 data-reveal>Two packages.<br>No fine print.</h1>
+      <p data-reveal>Pick what fits your shoot. Hourly rates, 3-hour minimum, everything included. Extra hours at the same rate.</p>
     </div>
   </section>
 
   <!-- RATE CARDS -->
   <section class="section section-divider">
     <div class="container">
-      <div class="rates-grid">
+      <div class="rates-grid" data-stagger>
         <!-- Studio Only -->
         <div class="rate-card">
           <h3>Studio Only</h3>
@@ -95,11 +95,11 @@
   <!-- BOOKING INFO -->
   <section class="section section-divider">
     <div class="container">
-      <div class="section-centered">
+      <div class="section-centered" data-reveal>
         <div class="section-sub">Before You Book</div>
         <h2>The details that matter.</h2>
       </div>
-      <div class="info-grid">
+      <div class="info-grid" data-stagger>
         <div class="info-item">
           <h3>Minimum Hours</h3>
           <p>All bookings require a 3-hour minimum. Need more time? Additional hours charged at the same rate.</p>
@@ -118,7 +118,7 @@
 
   <!-- CTA -->
   <section class="cta-banner">
-    <div class="container">
+    <div class="container" data-reveal="scale">
       <h2>Found your package?</h2>
       <p>Send us your preferred date and time. We confirm within 24 hours.</p>
       <div class="cta-buttons">
@@ -139,6 +139,8 @@
       </ul>
     </div>
   </footer>
+
+  <script src="scroll.js"></script>
 
 </body>
 </html>

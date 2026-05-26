@@ -1017,6 +1017,77 @@ img {
   color: var(--heading);
 }
 
+/* === SCROLL REVEAL ANIMATIONS === */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal="fade"] {
+  transform: none;
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.95);
+}
+
+[data-reveal="slide-left"] {
+  transform: translateX(-40px);
+}
+
+[data-reveal="slide-right"] {
+  transform: translateX(40px);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children in grids */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-stagger].revealed > *:nth-child(1) { transition-delay: 0s; }
+[data-stagger].revealed > *:nth-child(2) { transition-delay: 0.1s; }
+[data-stagger].revealed > *:nth-child(3) { transition-delay: 0.2s; }
+[data-stagger].revealed > *:nth-child(4) { transition-delay: 0.25s; }
+[data-stagger].revealed > *:nth-child(5) { transition-delay: 0.3s; }
+[data-stagger].revealed > *:nth-child(6) { transition-delay: 0.35s; }
+
+[data-stagger].revealed > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero parallax */
+.hero[data-parallax] {
+  transition: none;
+}
+
+.hero[data-parallax] .container {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* Smooth nav hide/show on scroll */
+.nav {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.25s ease;
+}
+
+.nav.nav-hidden {
+  transform: translateY(-100%);
+}
+
 /* === RESPONSIVE === */
 
 @media (max-width: 768px) {

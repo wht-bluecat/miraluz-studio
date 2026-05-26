@@ -42,11 +42,11 @@
   <main id="main">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" data-parallax>
     <div class="container">
-      <div class="hero-sub">The Studio</div>
-      <h1>Three spaces.<br>One creative address.</h1>
-      <p>A main studio, extended hallway, and prep room — designed so you can focus on the work, not the logistics.</p>
+      <div class="hero-sub" data-reveal="fade">The Studio</div>
+      <h1 data-reveal>Three spaces.<br>One creative address.</h1>
+      <p data-reveal>A main studio, extended hallway, and prep room — designed so you can focus on the work, not the logistics.</p>
     </div>
   </section>
 
@@ -54,8 +54,8 @@
   <section class="section section-divider">
     <div class="container">
       <div class="two-col">
-        <div class="placeholder-img">Main Studio — Wide Shot</div>
-        <div class="two-col-text">
+        <div class="placeholder-img" data-reveal="slide-left">Main Studio — Wide Shot</div>
+        <div class="two-col-text" data-reveal="slide-right">
           <div class="section-sub">Space 01</div>
           <h2>Main Studio</h2>
           <p>Your primary shooting space. Open-plan, adaptable, and ready for whatever you bring in — portraits, product shots, video content, or campaign work.</p>
@@ -68,7 +68,7 @@
   <!-- GALLERY -->
   <section class="section">
     <div class="container">
-      <div class="gallery-grid three-col">
+      <div class="gallery-grid three-col" data-stagger>
         <div class="placeholder-img square">Studio Detail 1</div>
         <div class="placeholder-img square">Studio Detail 2</div>
         <div class="placeholder-img square">Studio Detail 3</div>
@@ -80,13 +80,13 @@
   <section class="section section-divider">
     <div class="container">
       <div class="two-col">
-        <div class="two-col-text">
+        <div class="two-col-text" data-reveal="slide-left">
           <div class="section-sub">Space 02</div>
           <h2>Hallway</h2>
           <p>More room to work with depth, movement, and multiple setups. The hallway extends your creative options without leaving the building.</p>
           <p>Ideal for fashion editorials, cinematic sequences, and shoots that need breathing room.</p>
         </div>
-        <div class="placeholder-img">Hallway — Wide Shot</div>
+        <div class="placeholder-img" data-reveal="slide-right">Hallway — Wide Shot</div>
       </div>
     </div>
   </section>
@@ -95,8 +95,8 @@
   <section class="section section-divider">
     <div class="container">
       <div class="two-col">
-        <div class="placeholder-img">Makeup Room — Wide Shot</div>
-        <div class="two-col-text">
+        <div class="placeholder-img" data-reveal="slide-left">Makeup Room — Wide Shot</div>
+        <div class="two-col-text" data-reveal="slide-right">
           <div class="section-sub">Space 03</div>
           <h2>Makeup Room</h2>
           <p>Your talent shouldn't prep in a hallway. This dedicated room has mirrors, lighting, and space for hair, makeup, and styling teams to do their thing.</p>
@@ -109,18 +109,18 @@
   <!-- LOCATION -->
   <section class="section section-divider">
     <div class="container">
-      <div class="section-centered">
+      <div class="section-centered" data-reveal>
         <div class="section-sub">Location</div>
         <h2>Easy to find. Easy to get to.</h2>
         <p class="section-desc">We're inside Three Story House on Scout Limbaga Ext, Quezon City — accessible from major routes across Metro Manila.</p>
       </div>
-      <div class="map-placeholder">Map / Exterior Photo</div>
+      <div class="map-placeholder" data-reveal="scale">Map / Exterior Photo</div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-banner">
-    <div class="container">
+    <div class="container" data-reveal="scale">
       <h2>Ready to see it in person?</h2>
       <p>Check the rates, pick your date, and book. We'll confirm within 24 hours.</p>
       <div class="cta-buttons">
@@ -142,6 +142,8 @@
       </ul>
     </div>
   </footer>
+
+  <script src="scroll.js"></script>
 
 </body>
 </html>

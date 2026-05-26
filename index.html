@@ -51,12 +51,12 @@
   <main id="main">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" data-parallax>
     <div class="container">
-      <div class="hero-sub">Studio Rental &middot; Quezon City</div>
-      <h1>Show up with a vision.<br>Leave with the content.</h1>
-      <p>Three ready-to-shoot spaces for photographers, filmmakers, and creators who need a clean canvas without the setup headache.</p>
-      <div class="hero-ctas">
+      <div class="hero-sub" data-reveal="fade">Studio Rental &middot; Quezon City</div>
+      <h1 data-reveal>Show up with a vision.<br>Leave with the content.</h1>
+      <p data-reveal>Three ready-to-shoot spaces for photographers, filmmakers, and creators who need a clean canvas without the setup headache.</p>
+      <div class="hero-ctas" data-reveal>
         <a href="rates.html" class="btn btn-primary">See Rates &amp; Packages</a>
         <a href="contact.html" class="btn btn-outline">Book Your Session</a>
       </div>
@@ -66,12 +66,12 @@
   <!-- SPACES PREVIEW -->
   <section class="section section-divider">
     <div class="container">
-      <div class="section-centered">
+      <div class="section-centered" data-reveal>
         <div class="section-sub">The Spaces</div>
         <h2>Three rooms. One address.<br>Zero compromises.</h2>
         <p class="section-desc">A main studio, an extended hallway, and a dedicated makeup room. Book one or book all three.</p>
       </div>
-      <div class="spaces-grid">
+      <div class="spaces-grid" data-stagger>
         <div class="space-card">
           <div class="placeholder-img">Studio Photo</div>
           <div class="space-card-body">
@@ -100,11 +100,11 @@
   <!-- WHY MIRALUZ -->
   <section class="section section-divider">
     <div class="container">
-      <div class="section-centered">
+      <div class="section-centered" data-reveal>
         <div class="section-sub">Why Miraluz</div>
         <h2>Skip the setup. Start shooting.</h2>
       </div>
-      <div class="features-grid">
+      <div class="features-grid" data-stagger>
         <div class="feature-item">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
@@ -133,11 +133,11 @@
   <!-- FAQ -->
   <section class="section section-divider">
     <div class="container">
-      <div class="section-centered">
+      <div class="section-centered" data-reveal>
         <div class="section-sub">FAQ</div>
         <h2>Questions we get asked a lot.</h2>
       </div>
-      <div class="faq-list">
+      <div class="faq-list" data-stagger>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>What's included in my booking?</span>
@@ -198,7 +198,7 @@
 
   <!-- CTA -->
   <section class="cta-banner">
-    <div class="container">
+    <div class="container" data-reveal="scale">
       <h2>Have a shoot coming up?</h2>
       <p>Check our rates, pick a package, and lock in your date. Most inquiries confirmed within 24 hours.</p>
       <div class="cta-buttons">
@@ -221,6 +221,7 @@
     </div>
   </footer>
 
+  <script src="scroll.js"></script>
   <!-- Preloader + FAQ Scripts -->
   <script>
   // Preloader — animated counter 0→100%, then fade out
