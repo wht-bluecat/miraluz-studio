@@ -10,8 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="theme.js"></script>
+  <style>
+    /* Hide page content until preloader finishes — prevents flash */
+    .page-hidden { opacity: 0; }
+    .page-visible { opacity: 1; transition: opacity 0.4s ease; }
+  </style>
 </head>
-<body>
+<body class="page-hidden">
 
   <!-- PRELOADER -->
   <div class="preloader" id="preloader" aria-hidden="true">
@@ -235,9 +240,15 @@
     var preloader = document.getElementById('preloader');
     if (!preloader) return;
 
+    function revealPage() {
+      document.body.classList.remove('page-hidden');
+      document.body.classList.add('page-visible');
+    }
+
     // Reduced motion: skip
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       preloader.classList.add('done');
+      revealPage();
       return;
     }
 
@@ -262,6 +273,7 @@
         // Phase 3: hold briefly, then blur out
         setTimeout(function() {
           preloader.classList.add('blurring-out');
+          revealPage();
           setTimeout(function() {
             preloader.classList.add('done');
           }, 900);
@@ -273,6 +285,7 @@
     setTimeout(function() {
       clearInterval(reel);
       preloader.classList.add('blurring-out');
+      revealPage();
       setTimeout(function() { preloader.classList.add('done'); }, 900);
     }, 6000);
   })();
