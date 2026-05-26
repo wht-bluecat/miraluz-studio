@@ -13,6 +13,15 @@
 </head>
 <body>
 
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <img src="assets/logo.jpg" alt="" class="preloader-logo">
+    <div class="preloader-bar-track">
+      <div class="preloader-bar-fill" id="preloader-bar"></div>
+    </div>
+    <div class="preloader-counter" id="preloader-counter">0%</div>
+  </div>
+
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- NAV -->
@@ -28,9 +37,11 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-right">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark mode">
+          <span class="switch-knob">
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
         </button>
         <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
       </div>
@@ -119,6 +130,72 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="section-centered">
+        <div class="section-sub">FAQ</div>
+        <h2>Questions we get asked a lot.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What's included in my booking?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">Access to your chosen space(s) for the full duration of your booking. The studio comes with basic lighting setups and power outlets. Bring your own camera gear, props, and styling materials.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Is there a minimum booking time?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">Yes, the minimum booking is 3 hours. This gives you enough time to set up, shoot, and wrap without rushing.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I visit the studio before booking?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">Absolutely. Send us a message on Instagram or through the contact form and we'll schedule a quick walkthrough at a time that works for you.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What's the cancellation policy?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">We don't do cancellations, but we're flexible with rescheduling. Just give us at least 48 hours' notice before your booking date and we'll move it to a new slot.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How do I pay?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">We accept GCash, bank transfer, or cash. Full payment is required before your session to secure your slot.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Where exactly is the studio?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">We're inside Three Story House on Scout Limbaga Ext, Quezon City. Exact location details and a pin are sent after booking confirmation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-banner">
     <div class="container">
@@ -143,6 +220,63 @@
       </ul>
     </div>
   </footer>
+
+  <!-- Preloader + FAQ Scripts -->
+  <script>
+  // Preloader — animated counter 0→100%, then fade out
+  (function() {
+    var bar = document.getElementById('preloader-bar');
+    var counter = document.getElementById('preloader-counter');
+    var preloader = document.getElementById('preloader');
+    if (!preloader) return;
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress += Math.random() * 12 + 3;
+      if (progress > 100) progress = 100;
+      var p = Math.round(progress);
+      bar.style.width = p + '%';
+      counter.textContent = p + '%';
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(function() { preloader.classList.add('done'); }, 200);
+      }
+    }, 80);
+    // Safety: remove after 3s max
+    setTimeout(function() {
+      clearInterval(interval);
+      bar.style.width = '100%';
+      counter.textContent = '100%';
+      preloader.classList.add('done');
+    }, 3000);
+  })();
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.parentElement;
+      var answer = item.querySelector('.faq-answer');
+      var isOpen = item.classList.contains('open');
+      // Close all other items
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          openItem.querySelector('.faq-answer').style.maxHeight = '0';
+        }
+      });
+      // Toggle current
+      if (isOpen) {
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+      } else {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+  </script>
 
 </body>
 </html>
