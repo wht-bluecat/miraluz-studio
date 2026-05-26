@@ -15,20 +15,16 @@
 
   <!-- PRELOADER -->
   <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-slides">
-      <div class="preloader-slide active" style="background-image:url('assets/preloader/studio-1.jpg')"></div>
-      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-2.jpg')"></div>
-      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-3.jpg')"></div>
-      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-4.jpg')"></div>
-      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-5.jpg')"></div>
+    <div class="preloader-name">
+      <span class="preloader-name-line">Miraluz</span>
+      <span class="preloader-name-line">Studio</span>
     </div>
-    <div class="preloader-overlay"></div>
-    <div class="preloader-content">
-      <div class="preloader-counter" id="preloader-counter">01</div>
-      <div class="preloader-bar-track">
-        <div class="preloader-bar-fill" id="preloader-bar"></div>
-      </div>
-      <div class="preloader-total">05</div>
+    <div class="preloader-reel" id="preloader-reel">
+      <img src="assets/preloader/studio-1.jpg" alt="" class="preloader-reel-img active">
+      <img src="assets/preloader/studio-2.jpg" alt="" class="preloader-reel-img">
+      <img src="assets/preloader/studio-3.jpg" alt="" class="preloader-reel-img">
+      <img src="assets/preloader/studio-4.jpg" alt="" class="preloader-reel-img">
+      <img src="assets/preloader/studio-5.jpg" alt="" class="preloader-reel-img">
     </div>
   </div>
 
@@ -234,63 +230,50 @@
   <script src="scroll.js"></script>
   <!-- Preloader + FAQ Scripts -->
   <script>
-  // Photo Preloader — cycles through studio photos with crossfade
+  // Minimal Preloader — blur in name + fast photo reel, blur out to page
   (function() {
     var preloader = document.getElementById('preloader');
     if (!preloader) return;
 
-    var slides = preloader.querySelectorAll('.preloader-slide');
-    var bar = document.getElementById('preloader-bar');
-    var counter = document.getElementById('preloader-counter');
-    var total = slides.length;
-    var current = 0;
-    var intervalTime = 800; // ms per photo
-    var slideProgress = 0;
-
-    // Reduced motion: skip straight to done
+    // Reduced motion: skip
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       preloader.classList.add('done');
       return;
     }
 
-    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    var imgs = preloader.querySelectorAll('.preloader-reel-img');
+    var current = 0;
+    var total = imgs.length;
+    var cycles = 3; // cycle through all photos this many times
+    var speed = 180; // ms per photo — fast flipping
+    var count = 0;
+    var maxCount = total * cycles;
 
-    var tick = setInterval(function() {
-      slideProgress += 40; // tick every 40ms
-      var segmentProgress = slideProgress / intervalTime;
-      var globalProgress = ((current + segmentProgress) / total) * 100;
-      bar.style.width = Math.min(globalProgress, 100) + '%';
+    // Phase 1: blur in (CSS handles this via animation)
+    // Phase 2: cycle photos rapidly
+    var reel = setInterval(function() {
+      imgs[current].classList.remove('active');
+      current = (current + 1) % total;
+      imgs[current].classList.add('active');
+      count++;
 
-      if (slideProgress >= intervalTime) {
-        slideProgress = 0;
-        slides[current].classList.remove('active');
-        current++;
-
-        if (current >= total) {
-          clearInterval(tick);
-          bar.style.width = '100%';
-          counter.textContent = pad(total);
-          // Hold on last photo briefly, then reveal
+      if (count >= maxCount) {
+        clearInterval(reel);
+        // Phase 3: hold briefly, then blur out
+        setTimeout(function() {
+          preloader.classList.add('blurring-out');
           setTimeout(function() {
-            preloader.classList.add('revealing');
-            setTimeout(function() {
-              preloader.classList.add('done');
-            }, 800);
-          }, 300);
-          return;
-        }
-
-        slides[current].classList.add('active');
-        counter.textContent = pad(current + 1);
+            preloader.classList.add('done');
+          }, 900);
+        }, 400);
       }
-    }, 40);
+    }, speed);
 
-    // Safety net: force complete after 6s
+    // Safety net
     setTimeout(function() {
-      clearInterval(tick);
-      bar.style.width = '100%';
-      preloader.classList.add('revealing');
-      setTimeout(function() { preloader.classList.add('done'); }, 800);
+      clearInterval(reel);
+      preloader.classList.add('blurring-out');
+      setTimeout(function() { preloader.classList.add('done'); }, 900);
     }, 6000);
   })();
 
