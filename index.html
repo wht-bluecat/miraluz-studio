@@ -15,11 +15,21 @@
 
   <!-- PRELOADER -->
   <div class="preloader" id="preloader" aria-hidden="true">
-    <img src="assets/logo.jpg" alt="" class="preloader-logo">
-    <div class="preloader-bar-track">
-      <div class="preloader-bar-fill" id="preloader-bar"></div>
+    <div class="preloader-slides">
+      <div class="preloader-slide active" style="background-image:url('assets/preloader/studio-1.jpg')"></div>
+      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-2.jpg')"></div>
+      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-3.jpg')"></div>
+      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-4.jpg')"></div>
+      <div class="preloader-slide" style="background-image:url('assets/preloader/studio-5.jpg')"></div>
     </div>
-    <div class="preloader-counter" id="preloader-counter">0%</div>
+    <div class="preloader-overlay"></div>
+    <div class="preloader-content">
+      <div class="preloader-counter" id="preloader-counter">01</div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill" id="preloader-bar"></div>
+      </div>
+      <div class="preloader-total">05</div>
+    </div>
   </div>
 
   <a href="#main" class="skip-link">Skip to content</a>
@@ -224,31 +234,64 @@
   <script src="scroll.js"></script>
   <!-- Preloader + FAQ Scripts -->
   <script>
-  // Preloader — animated counter 0→100%, then fade out
+  // Photo Preloader — cycles through studio photos with crossfade
   (function() {
-    var bar = document.getElementById('preloader-bar');
-    var counter = document.getElementById('preloader-counter');
     var preloader = document.getElementById('preloader');
     if (!preloader) return;
-    var progress = 0;
-    var interval = setInterval(function() {
-      progress += Math.random() * 12 + 3;
-      if (progress > 100) progress = 100;
-      var p = Math.round(progress);
-      bar.style.width = p + '%';
-      counter.textContent = p + '%';
-      if (progress >= 100) {
-        clearInterval(interval);
-        setTimeout(function() { preloader.classList.add('done'); }, 200);
-      }
-    }, 80);
-    // Safety: remove after 3s max
-    setTimeout(function() {
-      clearInterval(interval);
-      bar.style.width = '100%';
-      counter.textContent = '100%';
+
+    var slides = preloader.querySelectorAll('.preloader-slide');
+    var bar = document.getElementById('preloader-bar');
+    var counter = document.getElementById('preloader-counter');
+    var total = slides.length;
+    var current = 0;
+    var intervalTime = 800; // ms per photo
+    var slideProgress = 0;
+
+    // Reduced motion: skip straight to done
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       preloader.classList.add('done');
-    }, 3000);
+      return;
+    }
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    var tick = setInterval(function() {
+      slideProgress += 40; // tick every 40ms
+      var segmentProgress = slideProgress / intervalTime;
+      var globalProgress = ((current + segmentProgress) / total) * 100;
+      bar.style.width = Math.min(globalProgress, 100) + '%';
+
+      if (slideProgress >= intervalTime) {
+        slideProgress = 0;
+        slides[current].classList.remove('active');
+        current++;
+
+        if (current >= total) {
+          clearInterval(tick);
+          bar.style.width = '100%';
+          counter.textContent = pad(total);
+          // Hold on last photo briefly, then reveal
+          setTimeout(function() {
+            preloader.classList.add('revealing');
+            setTimeout(function() {
+              preloader.classList.add('done');
+            }, 800);
+          }, 300);
+          return;
+        }
+
+        slides[current].classList.add('active');
+        counter.textContent = pad(current + 1);
+      }
+    }, 40);
+
+    // Safety net: force complete after 6s
+    setTimeout(function() {
+      clearInterval(tick);
+      bar.style.width = '100%';
+      preloader.classList.add('revealing');
+      setTimeout(function() { preloader.classList.add('done'); }, 800);
+    }, 6000);
   })();
 
   // FAQ Accordion
