@@ -1,10 +1,9 @@
 (function() {
   var saved = localStorage.getItem('miraluz-theme');
-  if (saved) {
-    document.documentElement.setAttribute('data-theme', saved);
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  if (saved === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
+  // Default is always light — dark only if user explicitly toggled
 })();
 
 function toggleTheme() {
