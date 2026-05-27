@@ -435,9 +435,14 @@
 
   function normalizeDate(d) {
     if (d instanceof Date) return formatDateISO(d);
-    if (typeof d === 'string' && d.includes('/')) {
-      var parts = d.split('/');
-      return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
+    if (typeof d === 'string') {
+      // Handle ISO datetime: "2026-06-15T00:00:00.000Z"
+      if (d.includes('T')) return d.split('T')[0];
+      // Handle MM/DD/YYYY from Sheets
+      if (d.includes('/')) {
+        var parts = d.split('/');
+        return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
+      }
     }
     return d;
   }
