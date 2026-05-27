@@ -3,65 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Miraluz Studio</title>
-  <meta name="description" content="Book your studio session or ask us anything. Send your preferred date, time, and package — we'll confirm within 24 hours.">
+  <title>Book — Miraluz Studio</title>
+  <meta name="description" content="Book your studio session. Pick your package, date, and time — we'll confirm within 24 hours.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="theme.js"></script>
-  <style>
-    .form-error {
-      font-size: 13px;
-      color: #c0392b;
-      margin-bottom: 12px;
-      min-height: 20px;
-    }
-    .form-success {
-      text-align: center;
-      padding: 48px 24px;
-      border: 1px solid var(--border);
-      background: var(--bg-elevated);
-    }
-    .success-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--accent-subtle);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-    .success-icon svg {
-      width: 28px;
-      height: 28px;
-    }
-    .form-success h3 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--heading);
-      margin-bottom: 8px;
-    }
-    .form-success p {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-    #submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 768px) {
-      .form-row { grid-template-columns: 1fr; gap: 0; }
-    }
-  </style>
 </head>
 <body>
 
@@ -77,7 +25,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="studio.html">The Studio</a></li>
         <li><a href="rates.html">Rates</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html" class="active">Book</a></li>
       </ul>
       <div class="nav-right">
         <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark mode">
@@ -96,106 +44,181 @@
   <!-- HERO -->
   <section class="hero" data-parallax>
     <div class="container">
-      <div class="hero-sub" data-reveal="fade">Contact</div>
-      <h1 data-reveal>Tell us about<br>your shoot.</h1>
-      <p data-reveal>Send your preferred date, time, and package. We respond to every inquiry within 24 hours.</p>
+      <div class="hero-sub" data-reveal="fade">Book a Session</div>
+      <h1 data-reveal>Pick your schedule.<br>We'll handle the rest.</h1>
+      <p data-reveal>Choose your package, date, and time. Fill in your details last. We confirm within 24 hours.</p>
     </div>
   </section>
 
-  <!-- CONTACT FORM + INFO -->
+  <!-- BOOKING WIZARD -->
   <section class="section section-divider">
     <div class="container">
-      <div class="contact-grid">
-        <!-- Form -->
-        <form id="inquiry-form" data-reveal="slide-left" data-script-url="https://script.google.com/macros/s/AKfycbz_YKDn3nuPhHYh5pYsXFBhAeFOyfgEevlA0rHn0VO_3--JLGefnrcUXv9yLl5xShUs/exec" novalidate>
-          <div class="form-group">
-            <label for="name">Name <span class="required">*</span></label>
-            <input type="text" id="name" name="name" placeholder="Your full name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" placeholder="you@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone / Mobile</label>
-            <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX">
-          </div>
-          <div class="form-group">
-            <label for="package">Package <span class="required">*</span></label>
-            <select id="package" name="package" required>
-              <option value="">Select a package</option>
-              <option value="Studio Only — ₱1,000/hr (launch rate)">Studio Only — ₱1,000/hr (launch rate)</option>
-              <option value="Full Access — ₱1,200/hr (launch rate)">Full Access — ₱1,200/hr (launch rate)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Preferred Date <span class="required">*</span></label>
-            <input type="hidden" id="date" name="date" required>
-            <div class="calendar-picker" id="calendar">
-              <div class="cal-header">
-                <button type="button" class="cal-nav" id="calendar-prev" aria-label="Previous month">
-                  <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <span class="cal-month" id="calendar-month"></span>
-                <button type="button" class="cal-nav" id="calendar-next" aria-label="Next month">
-                  <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="9 6 15 12 9 18"/></svg>
-                </button>
-              </div>
-              <div class="cal-grid" id="calendar-grid"></div>
-              <div class="cal-selected" id="selected-date-display">Select a date</div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="start-time">Start Time <span class="required">*</span></label>
-              <select id="start-time" name="start-time" required>
-                <option value="">Select a time</option>
-                <option value="7:00 AM">7:00 AM</option>
-                <option value="8:00 AM">8:00 AM</option>
-                <option value="9:00 AM">9:00 AM</option>
-                <option value="10:00 AM">10:00 AM</option>
-                <option value="11:00 AM">11:00 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="1:00 PM">1:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="3:00 PM">3:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-                <option value="5:00 PM">5:00 PM</option>
-                <option value="6:00 PM">6:00 PM</option>
-                <option value="7:00 PM">7:00 PM</option>
-                <option value="8:00 PM">8:00 PM</option>
-                <option value="9:00 PM">9:00 PM</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="hours">Duration <span class="required">*</span></label>
-              <select id="hours" name="hours" required>
-                <option value="3">3 hours (minimum)</option>
-                <option value="4">4 hours</option>
-                <option value="5">5 hours</option>
-                <option value="6">6 hours</option>
-                <option value="8">8 hours (full day)</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">Anything else we should know?</label>
-            <textarea id="message" name="message" placeholder="Type of shoot, team size, specific needs..."></textarea>
-          </div>
-          <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
-          <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;">Continue to Payment</button>
-        </form>
+      <div class="booking-wizard" id="booking-wizard" data-script-url="https://script.google.com/macros/s/AKfycbz_YKDn3nuPhHYh5pYsXFBhAeFOyfgEevlA0rHn0VO_3--JLGefnrcUXv9yLl5xShUs/exec">
 
-        <div class="form-success" id="form-success" hidden>
-          <div class="success-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3>Inquiry sent.</h3>
-          <p>We'll get back to you within 24 hours to confirm your booking.</p>
+        <!-- Progress Steps -->
+        <div class="wizard-progress">
+          <div class="wizard-step active" data-step="1"><span class="wizard-step-num">1</span> Package</div>
+          <div class="wizard-step" data-step="2"><span class="wizard-step-num">2</span> Schedule</div>
+          <div class="wizard-step" data-step="3"><span class="wizard-step-num">3</span> Details</div>
         </div>
 
-        <!-- Info Sidebar -->
-        <div class="contact-info" data-reveal="slide-right">
+        <!-- STEP 1: Package + Duration -->
+        <div class="wizard-panel active" id="step-1">
+          <div class="wizard-panel-inner">
+            <h2 class="wizard-title">Select a Package</h2>
+            <p class="wizard-desc">Choose how much space you need.</p>
+
+            <div class="package-cards">
+              <button type="button" class="package-card" data-package="Studio Only — ₱1,000/hr (launch rate)">
+                <h3>Studio Only</h3>
+                <p class="package-price">₱1,000<span>/hr</span></p>
+                <p class="package-note">Main studio access, natural + artificial lighting</p>
+              </button>
+              <button type="button" class="package-card" data-package="Full Access — ₱1,200/hr (launch rate)">
+                <h3>Full Access</h3>
+                <p class="package-price">₱1,200<span>/hr</span></p>
+                <p class="package-note">Studio + hallway + makeup room</p>
+              </button>
+            </div>
+
+            <h2 class="wizard-title" style="margin-top: var(--space-7);">Booking Duration</h2>
+            <p class="wizard-desc">3-hour minimum. Extra hours at the same rate.</p>
+
+            <div class="duration-pills" id="duration-pills">
+              <button type="button" class="duration-pill" data-hours="3">3 hours</button>
+              <button type="button" class="duration-pill" data-hours="4">4 hours</button>
+              <button type="button" class="duration-pill" data-hours="5">5 hours</button>
+              <button type="button" class="duration-pill" data-hours="6">6 hours</button>
+              <button type="button" class="duration-pill" data-hours="7">7 hours</button>
+              <button type="button" class="duration-pill" data-hours="8">8 hours</button>
+            </div>
+
+            <button type="button" class="btn btn-primary wizard-next" id="next-1" style="width:100%; margin-top: var(--space-6);" disabled>Select a Date &amp; Time</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Date & Time -->
+        <div class="wizard-panel" id="step-2">
+          <div class="wizard-panel-inner">
+
+            <!-- Booking sidebar summary -->
+            <div class="wizard-sidebar">
+              <div class="sidebar-summary">
+                <h3 id="sidebar-package">—</h3>
+                <div class="sidebar-detail">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span id="sidebar-duration">—</span>
+                </div>
+                <div class="sidebar-detail">
+                  <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Sct. Limbaga Ext., QC</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Calendar + Time Picker -->
+            <div class="schedule-layout">
+              <div class="schedule-calendar">
+                <h2 class="wizard-title">Select a Date & Time</h2>
+                <div class="calendar-picker" id="calendar">
+                  <div class="cal-header">
+                    <button type="button" class="cal-nav" id="calendar-prev" aria-label="Previous month">
+                      <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <span class="cal-month" id="calendar-month"></span>
+                    <button type="button" class="cal-nav" id="calendar-next" aria-label="Next month">
+                      <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="9 6 15 12 9 18"/></svg>
+                    </button>
+                  </div>
+                  <div class="cal-grid" id="calendar-grid"></div>
+                </div>
+                <div class="cal-timezone">
+                  <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Asia/Manila
+                </div>
+              </div>
+
+              <!-- Time slots — appear after date is picked -->
+              <div class="schedule-times" id="time-panel" hidden>
+                <h3 class="time-panel-date" id="time-panel-date"></h3>
+                <div class="time-slots" id="time-slots"></div>
+              </div>
+            </div>
+
+            <div class="wizard-nav-row">
+              <button type="button" class="btn btn-outline wizard-back" id="back-2">Back</button>
+              <button type="button" class="btn btn-primary wizard-next" id="next-2" disabled>Enter Your Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Contact Details -->
+        <div class="wizard-panel" id="step-3">
+          <div class="wizard-panel-inner">
+
+            <!-- Booking summary -->
+            <div class="wizard-sidebar">
+              <div class="sidebar-summary">
+                <h3 id="sidebar-package-2">—</h3>
+                <div class="sidebar-detail">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span id="sidebar-duration-2">—</span>
+                </div>
+                <div class="sidebar-detail">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span id="sidebar-datetime">—</span>
+                </div>
+                <div class="sidebar-detail">
+                  <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Sct. Limbaga Ext., QC</span>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="wizard-title">Enter Your Details</h2>
+            <p class="wizard-desc">Almost done — just need your contact info.</p>
+
+            <form id="inquiry-form" novalidate>
+              <input type="hidden" id="date" name="date">
+              <input type="hidden" id="start-time" name="start-time">
+              <input type="hidden" id="package" name="package">
+              <input type="hidden" id="hours" name="hours">
+
+              <div class="form-group">
+                <label for="name">Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone / Mobile</label>
+                <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX">
+              </div>
+              <div class="form-group">
+                <label for="message">Anything else we should know?</label>
+                <textarea id="message" name="message" placeholder="Type of shoot, team size, specific needs..."></textarea>
+              </div>
+              <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
+
+              <div class="wizard-nav-row">
+                <button type="button" class="btn btn-outline wizard-back" id="back-3">Back</button>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Continue to Payment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO + MAP -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="contact-bottom-grid">
+        <div class="contact-info" data-reveal="slide-left">
           <div class="contact-info-item">
             <h3>Location</h3>
             <p>Scout Limbaga Ext, Quezon City<br>Inside Three Story House<br>(@threestoryhouseph)</p>
@@ -217,19 +240,9 @@
             <p>No cancellations — reschedule only.<br>Contact us 48+ hours before your date.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAP -->
-  <section class="section">
-    <div class="container">
-      <div class="section-centered" data-reveal>
-        <div class="section-sub">Location</div>
-        <h2>Find us here.</h2>
-      </div>
-      <div class="map-embed" data-reveal="scale">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930.2!2d121.0415489!3d14.6319835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b1c9423003%3A0x5278dd40925f7165!2s77%20Scout%20Limbaga%20Ext%2C%20Diliman%2C%20Quezon%20City%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1716800000000!5m2!1sen!2sph" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Miraluz Studio location — Three Story House, 77 Sct. Limbaga Ext., Quezon City"></iframe>
+        <div class="map-embed" data-reveal="slide-right">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930.2!2d121.0415489!3d14.6319835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b1c9423003%3A0x5278dd40925f7165!2s77%20Scout%20Limbaga%20Ext%2C%20Diliman%2C%20Quezon%20City%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1716800000000!5m2!1sen!2sph" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Miraluz Studio location"></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -242,7 +255,7 @@
       <p class="footer-text">&copy; 2026 Miraluz Studio. All rights reserved.</p>
       <ul class="footer-links">
         <li><a href="https://instagram.com/miraluzstudio" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html">Book</a></li>
       </ul>
     </div>
   </footer>
