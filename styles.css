@@ -786,7 +786,7 @@ img {
 }
 
 .rate-card.featured::before {
-  content: 'BEST VALUE';
+  content: 'ALL SPACES';
   position: absolute;
   top: 0;
   left: 50%;
