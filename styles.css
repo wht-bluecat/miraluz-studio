@@ -671,6 +671,16 @@ img {
 .placeholder-img.portrait { aspect-ratio: 3/4; }
 .placeholder-img.square { aspect-ratio: 1/1; }
 
+/* Real content photos — match placeholder sizing */
+.studio-photo {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--border);
+}
+.studio-photo.square { aspect-ratio: 1/1; }
+
 /* === SPACE CARDS === */
 
 .spaces-grid {
