@@ -652,26 +652,7 @@ img {
   margin: 0 auto;
 }
 
-/* === PLACEHOLDER IMAGE === */
-
-.placeholder-img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: var(--text-sm);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.placeholder-img.portrait { aspect-ratio: 3/4; }
-.placeholder-img.square { aspect-ratio: 1/1; }
-
-/* Real content photos — match placeholder sizing */
+/* Real content photos */
 .studio-photo {
   width: 100%;
   aspect-ratio: 16/10;
@@ -848,6 +829,11 @@ img {
   color: var(--accent);
   margin-top: var(--space-1);
   font-weight: 500;
+}
+
+.rate-price .promo s {
+  color: var(--text-muted);
+  text-decoration-thickness: 1px;
 }
 
 .rate-includes {
@@ -1102,6 +1088,145 @@ img {
   background: var(--accent);
   color: var(--bg);
   border-color: var(--accent);
+}
+
+/* Payment choice (Step 3 — Cash / Cashless) */
+.payment-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.payment-choice-option {
+  display: block;
+  cursor: pointer;
+  margin: 0;
+}
+
+.payment-choice-option input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.payment-choice-card {
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-elevated);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.payment-choice-option:hover .payment-choice-card {
+  border-color: var(--accent);
+}
+
+.payment-choice-option input:checked + .payment-choice-card {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.payment-choice-option input:focus-visible + .payment-choice-card {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.payment-choice-card strong {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: var(--space-1);
+}
+
+.payment-choice-card small {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .payment-choice {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Payment note (Step 3) */
+.payment-note {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: var(--space-1);
+}
+
+/* Terms agreement checkbox (Step 3) */
+.form-group label.terms-agree {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.form-group .terms-agree input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.terms-agree a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* === TERMS & CONDITIONS === */
+.terms-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-9);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terms-clause {
+  padding: var(--space-6);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.terms-clause h3 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--heading);
+  margin-bottom: var(--space-2);
+}
+
+.terms-clause p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .terms-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Schedule layout (Step 2) */

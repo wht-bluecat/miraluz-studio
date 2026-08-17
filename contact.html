@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <title>Book — Miraluz Studio</title>
   <meta name="description" content="Book your studio session. Pick your package, date, and time — we'll confirm within 24 hours.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +46,7 @@
   <section class="hero" data-parallax>
     <div class="container">
       <div class="hero-sub" data-reveal="fade">Book a Session</div>
-      <h1 data-reveal>Pick your schedule.<br>We'll handle the rest.</h1>
+      <h1 data-reveal>Pick your schedule.<br>We handle the rest.</h1>
       <p data-reveal>Choose your package, date, and time. Fill in your details last. We confirm within 24 hours.</p>
     </div>
   </section>
@@ -111,7 +112,7 @@
                 </div>
                 <div class="sidebar-detail">
                   <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Sct. Limbaga Ext., QC</span>
+                  <span>170-D Scout Limbaga Ext., QC</span>
                 </div>
               </div>
             </div>
@@ -170,7 +171,7 @@
                 </div>
                 <div class="sidebar-detail">
                   <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Sct. Limbaga Ext., QC</span>
+                  <span>170-D Scout Limbaga Ext., QC</span>
                 </div>
               </div>
             </div>
@@ -197,8 +198,18 @@
                 <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX">
               </div>
               <div class="form-group">
+                <label>Payment</label>
+                <p class="payment-note">Reserve with a 50% non-refundable downpayment via GCash or bank transfer. You will send payment and upload your receipt on the next step.</p>
+              </div>
+              <div class="form-group">
                 <label for="message">Anything else we should know?</label>
                 <textarea id="message" name="message" placeholder="Type of shoot, team size, specific needs..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="terms-agree">
+                  <input type="checkbox" id="agree-terms" name="agreeTerms" required>
+                  <span>I have read and agree to the <a href="#terms">Terms and Conditions</a>, including the 50% non-refundable downpayment and no-cancellation policy.</span>
+                </label>
               </div>
               <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
 
@@ -214,6 +225,35 @@
     </div>
   </section>
 
+  <!-- TERMS & CONDITIONS -->
+  <section class="section section-divider" id="terms">
+    <div class="container">
+      <div class="section-centered" data-reveal>
+        <div class="section-sub">The Fine Print</div>
+        <h2>Terms and Conditions.</h2>
+        <p class="section-desc">Please read before you book. Submitting a booking means you agree to these terms.</p>
+      </div>
+      <div class="terms-list" data-stagger>
+        <div class="terms-clause">
+          <h3>Extension</h3>
+          <p>Extension is subject to availability and thus not guaranteed, and will incur a charge of &#8369;1,500/hour.</p>
+        </div>
+        <div class="terms-clause">
+          <h3>Reservation</h3>
+          <p>To confirm the reservation, a 50% non-refundable downpayment is required. No downpayment, no reservation.</p>
+        </div>
+        <div class="terms-clause">
+          <h3>No-Show Policy</h3>
+          <p>The 50% downpayment used to reserve the date will be kept in the event of a no-show. The client must rebook another date.</p>
+        </div>
+        <div class="terms-clause">
+          <h3>Cancellation and Rebooking</h3>
+          <p>Cancellations are not allowed. Rebooking is subject to availability, and thus will incur a fee of 40% of the total bill for every rebooking. Your downpayment carries over to your first rebooking only. On a second rebooking, the downpayment is forfeited and a new downpayment is required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- INFO + MAP -->
   <section class="section section-divider">
     <div class="container">
@@ -221,7 +261,7 @@
         <div class="contact-info" data-reveal="slide-left">
           <div class="contact-info-item">
             <h3>Location</h3>
-            <p>Scout Limbaga Ext, Quezon City<br>Inside Three Story House<br>(@threestoryhouseph)</p>
+            <p>170-D Scout Limbaga Extension, Quezon City<br>Inside Three Story House<br>(@threestoryhouseph)</p>
           </div>
           <div class="contact-info-item">
             <h3>Instagram</h3>
@@ -233,15 +273,15 @@
           </div>
           <div class="contact-info-item">
             <h3>Payment</h3>
-            <p>GCash, bank transfer, or cash.<br>Full payment before your session.</p>
+            <p>GCash or bank transfer.<br>50% non-refundable downpayment to reserve.</p>
           </div>
           <div class="contact-info-item">
             <h3>Rescheduling</h3>
-            <p>No cancellations — reschedule only.<br>Contact us 48+ hours before your date.</p>
+            <p>No cancellations. Rebooking incurs a 40% fee<br>and is subject to availability.</p>
           </div>
         </div>
         <div class="map-embed" data-reveal="slide-right">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930.2!2d121.0415489!3d14.6319835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b1c9423003%3A0x5278dd40925f7165!2s77%20Scout%20Limbaga%20Ext%2C%20Diliman%2C%20Quezon%20City%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1716800000000!5m2!1sen!2sph" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Miraluz Studio location"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.432163025456!2d121.04057117581337!3d14.63139267632059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b038b7dd85%3A0x9dcf36ee6167122d!2s170D%20Scout%20Limbaga%20Ext%2C%20Sacred%20Heart%2C%20Diliman%2C%20Quezon%20City%2C%201103%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1781635817096!5m2!1sen!2sph" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Miraluz Studio — Scout Limbaga Extension, Quezon City"></iframe>
         </div>
       </div>
     </div>

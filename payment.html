@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <title>Payment — Miraluz Studio</title>
   <meta name="description" content="Complete your booking by sending payment and uploading your receipt.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -348,7 +349,7 @@
     <div class="container">
       <div class="hero-sub" data-reveal="fade">Payment</div>
       <h1 data-reveal>Complete your<br>booking.</h1>
-      <p data-reveal>Send your payment using any method below, then upload the receipt to confirm your slot.</p>
+      <p data-reveal>Send your 50% non-refundable downpayment using the details below, then upload the receipt to reserve your slot. The balance is due before your session.</p>
     </div>
   </section>
 
@@ -381,6 +382,10 @@
               <span class="summary-value" id="pay-hours">—</span>
             </div>
             <div class="summary-row">
+              <span class="summary-label">Payment</span>
+              <span class="summary-value" id="pay-type">—</span>
+            </div>
+            <div class="summary-row">
               <span class="summary-label">Status</span>
               <span class="summary-value"><span class="status-badge">Pending</span></span>
             </div>
@@ -405,15 +410,6 @@
               </div>
             </div>
 
-            <div class="payment-method">
-              <h4>
-                <span class="payment-method-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-                Cash
-              </h4>
-              <div class="payment-detail">
-                Pay in person at the studio before your session starts. Bring exact amount if possible.
-              </div>
-            </div>
           </div>
         </div>
 
@@ -441,6 +437,12 @@
             <div id="upload-error" role="alert"></div>
 
             <button type="button" class="btn btn-primary" id="upload-btn" style="width:100%; margin-top: var(--space-5);" disabled>Upload Receipt</button>
+
+            <p style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-4); line-height: 1.6;">
+              Prefer email? Send your deposit slip or screenshot to
+              <a href="mailto:miraluzstudio@gmail.com" style="color: var(--heading);">miraluzstudio@gmail.com</a>
+              with the subject line<br><strong style="color: var(--text-secondary);">PROOF OF PAYMENT - YOUR NAME - <span id="email-booking-id">YOUR BOOKING ID</span></strong>
+            </p>
           </div>
 
           <div class="upload-success" id="upload-success" hidden data-reveal="slide-right">
@@ -490,7 +492,9 @@
     document.getElementById('pay-date').textContent = params.get('date') || '—';
     document.getElementById('pay-time').textContent = params.get('timeSlot') || '—';
     document.getElementById('pay-hours').textContent = (params.get('hours') || '—') + ' hours';
+    document.getElementById('pay-type').textContent = params.get('paymentType') || '—';
     document.getElementById('pay-booking-id').textContent = bookingId;
+    if (bookingId) document.getElementById('email-booking-id').textContent = bookingId;
 
     // File upload handling
     var uploadArea = document.getElementById('upload-area');

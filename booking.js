@@ -65,6 +65,14 @@
   var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   var dayNamesFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+  // Candidate session start times (studio runs 7AM–10PM; 10PM is the hard cutoff)
+  var START_TIMES = [
+    '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM',
+    '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM',
+    '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM'
+  ];
+  var CLOSING_HOUR = 22; // 10 PM
+
   // =====================
   // STEP NAVIGATION
   // =====================
@@ -203,37 +211,14 @@
     timePanelDate.textContent = dayNamesFull[selectedDate.getDay()] + ', ' +
       monthNames[selectedDate.getMonth()] + ' ' + selectedDate.getDate() + ', ' + selectedDate.getFullYear();
 
-    var dayBookings = getBookedTimesForDate(dateStr);
-    var takenHours = {};
-    dayBookings.forEach(function (slot) {
-      var startHour = parseTimeToHour(slot.timeSlot.split('—')[0].trim());
-      var duration = parseInt(slot.hours) || 3;
-      if (startHour !== null) {
-        for (var h = startHour; h < startHour + duration; h++) {
-          takenHours[h] = true;
-        }
-      }
-    });
-
-    var times = [
-      '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM',
-      '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM',
-      '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM'
-    ];
+    var takenHours = getTakenHours(dateStr);
 
     var dur = parseInt(state.hours) || 3;
     var html = '';
 
-    times.forEach(function (t) {
+    START_TIMES.forEach(function (t) {
       var hour = parseTimeToHour(t);
-      // Check if entire block fits without overlapping booked hours
-      var blocked = false;
-      for (var h = hour; h < hour + dur; h++) {
-        if (takenHours[h] || h >= 22) { // 22 = 10PM hard cutoff
-          blocked = true;
-          break;
-        }
-      }
+      var blocked = isSlotBlocked(hour, dur, takenHours);
 
       var endTime = calcEndTime(t, dur);
       var isSelected = state.startTime === t;
@@ -291,27 +276,21 @@
 
     var name = form.querySelector('[name="name"]').value.trim();
     var email = form.querySelector('[name="email"]').value.trim();
+    var agreeTerms = form.querySelector('[name="agreeTerms"]');
+    var paymentType = 'Cashless';
 
     if (!name || !email) {
       errorEl.textContent = 'Please fill in your name and email.';
       return;
     }
 
-    var endTime = calcEndTime(state.startTime, state.hours);
-    var timeSlot = state.startTime + ' — ' + endTime;
-
-    if (!scriptUrl) {
-      redirectToPayment({
-        bookingId: 'DEMO-' + Date.now().toString(36).toUpperCase(),
-        name: name,
-        email: email,
-        package: state.package,
-        date: state.date,
-        timeSlot: timeSlot,
-        hours: state.hours
-      });
+    if (!agreeTerms || !agreeTerms.checked) {
+      errorEl.textContent = 'Please agree to the Terms and Conditions to continue.';
       return;
     }
+
+    var endTime = calcEndTime(state.startTime, state.hours);
+    var timeSlot = state.startTime + ' — ' + endTime;
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
@@ -325,6 +304,7 @@
       startTime: state.startTime,
       hours: state.hours,
       timeSlot: timeSlot,
+      paymentType: paymentType,
       message: form.querySelector('[name="message"]').value.trim(),
       timestamp: new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' })
     });
@@ -342,7 +322,8 @@
           package: state.package,
           date: state.date,
           timeSlot: timeSlot,
-          hours: state.hours
+          hours: state.hours,
+          paymentType: paymentType
         });
       })
       .catch(function () {
@@ -416,13 +397,38 @@
     return h;
   }
 
-  function isDateFullyBooked(dateStr) {
-    var hoursBooked = 0;
-    bookedSlots.forEach(function (slot) {
-      var sd = normalizeDate(slot.date);
-      if (sd === dateStr) hoursBooked += parseInt(slot.hours) || 3;
+  // Map of hours (0-23) already taken by existing bookings on a given date
+  function getTakenHours(dateStr) {
+    var takenHours = {};
+    getBookedTimesForDate(dateStr).forEach(function (slot) {
+      var startHour = parseTimeToHour(slot.timeSlot.split('—')[0].trim());
+      var duration = parseInt(slot.hours) || 3;
+      if (startHour !== null) {
+        for (var h = startHour; h < startHour + duration; h++) {
+          takenHours[h] = true;
+        }
+      }
     });
-    return hoursBooked >= 14;
+    return takenHours;
+  }
+
+  // A start time is blocked if any hour of the session overlaps a booking
+  // or runs past the 10PM closing time.
+  function isSlotBlocked(startHour, dur, takenHours) {
+    for (var h = startHour; h < startHour + dur; h++) {
+      if (takenHours[h] || h >= CLOSING_HOUR) return true;
+    }
+    return false;
+  }
+
+  // A day is fully booked when NO start time can fit the selected duration —
+  // i.e. every time slot would be greyed out. The whole day is then greyed out.
+  function isDateFullyBooked(dateStr) {
+    var dur = parseInt(state.hours) || 3;
+    var takenHours = getTakenHours(dateStr);
+    return START_TIMES.every(function (t) {
+      return isSlotBlocked(parseTimeToHour(t), dur, takenHours);
+    });
   }
 
   function getBookedTimesForDate(dateStr) {
